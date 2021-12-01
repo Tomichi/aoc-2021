@@ -2,27 +2,19 @@
 #include <string>
 #include <array>
 
-int main(){
+int main() {
     bool is_reading_ok = false;
     std::array<int, 4> numbers;
-    int end_index = 0;
-    int start_index = 0;
-    int increased = 0;
-    while(std::cin >> numbers[end_index]) {
-	if (!is_reading_ok && end_index == 3){
+    int index = 0;
+    int increased_num = 0;
+    while(std::cin >> numbers[index]) {
+	if (!is_reading_ok && index == 3) {
 	    is_reading_ok = true;
         }
-
-	if (is_reading_ok) {
-	    increased += numbers[start_index % 4] < numbers[end_index % 4] ? 1 : 0;
-	    start_index = (start_index + 1) % 4;
-            end_index = (end_index + 1) % 4; 
-	} else {
-  	    end_index += 1;
-        }
+     increased_num += is_reading_ok && numbers[(index + 5) % 4] < numbers[index] ? 1 : 0;
+     index = (index + 1) % 4;
+            
     }
-    std::cout << increased << "\n";
-
-
+    std::cout << increased_num << "\n";
 return 0;
 }
